@@ -14,7 +14,7 @@
             _this._target = arguments[0];
             _this._method = arguments[1];
         }
-        // 仅传入一个参数时，执行 function 调用isFunction(args[0])
+        // 仅传入一个参数时，执行 function 调用
         else if ((arguments.length == 1) && (arguments[0] instanceof Function)) {
             _this._target = null;
             _this._method = arguments[0];
@@ -33,7 +33,6 @@
          * @param advice AOP通知
          */
         before: function (advice = null) {
-            console.log('AOP/before:this',this);
             let target = this._target;// 目标对象
             let method = this._method;// 目标方法
             let advice_func = advice || function () {
