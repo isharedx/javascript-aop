@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AOP Demo</title>
+    <script src="js/AOP.js"></script>
+</head>
+<body>
+<label for="btn1"></br>Demo1: invoking by object base on after operation </br></label>
+<input id="btn1" type="button" value="click" onclick="demo1()">
+
+<label for="btn2"></br>Demo2: invoking by object base on before operation </br></label>
+<input id="btn2" type="button" value="click" onclick="demo2()">
+
+<script>
+    function demo1(){ alert('This is this 1st demo base on before operation.'); }
+    function demo2(){ alert('This is this 2nd demo base on after operation.'); }
+
+    window.onload = function(){
+        function demo0(){ alert('This is this 0th demo base on after operation.'); }
+        AOP(demo0).after(function(){ alert('Invoked by function.'); });
+
+        let btn1 = document.getElementById('btn1');
+        AOP(btn1,'onclick').after(function(){ alert('After operation invoked.'); });
+
+        let btn2 = document.getElementById('btn2');
+        AOP(btn2,'onclick').before(function(){ alert('Before operation invoked.'); });
+
+    }
+</script>
+</body>
+</html>
